@@ -1,21 +1,21 @@
 module Api::V1
   class SessionsController < ApplicationController
+    before_action :authenticate, only: [:destroy]
 
     # POST /sessions
     def create
-      binding.pry
       user = User.find_by(username: params[:username])
       if user&.authenticate(params[:password])
         User.set_auth_token(user)
-        render json: user.as_json(only: [:username, :auth_token]), status: :ok
+        render json: user.as_json(only: [:id, :username, :auth_token]), status: :ok
       else
         head(:unauthorized)
       end
     end
 
-    # DELETE /sessions
+    # DELETE /sessions/:id
     def destroy
-      current_user.auth_token.destroy
+      @current_user.update(auth_token: nil)
       head(:ok)
     end
   end
