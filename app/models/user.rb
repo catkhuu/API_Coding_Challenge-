@@ -11,5 +11,6 @@ class User < ApplicationRecord
   def self.set_auth_token(user)
     return if user.auth_token.present?
     user.auth_token = self.generate_auth_token(user)
+    user.save 
   end
 end
