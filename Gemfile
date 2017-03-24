@@ -16,10 +16,13 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Store and protect keys in .env file (added to .gitignore)
-gem 'dotenv'
+gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
+# Use rest-client to handle requests to third-party API
+gem 'rest-client', :require => 'rest-client'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors', :require => 'rack/cors'
+gem "active_model_serializers", github: "rails-api/active_model_serializers"
 
 group :development, :test do
   gem 'byebug', platform: :mri
