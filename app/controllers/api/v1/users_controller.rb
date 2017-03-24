@@ -1,7 +1,5 @@
 module Api::V1
   class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update]
-
 
     # POST /users
     def create
@@ -15,23 +13,19 @@ module Api::V1
 
     # GET /users/1
     def show
-      render json: @user, status: :ok
+      render json: @current_user, status: :ok
     end
 
     # PATCH/PUT /users/1
     def update
-      if @user.update(user_params)
-        render json: @user
+      if @current_user.update(user_params)
+        render json: @current_user
       else
-        render json: @user.errors, status: :unprocessable_entity
-      end 
+        render json: @current_user.errors, status: :unprocessable_entity
+      end
     end
 
     private
-
-    def set_user
-      @user = current_user
-    end
 
     def user_params
       params.require(:user).permit(:username, :role, :password, :password_confirmation)
