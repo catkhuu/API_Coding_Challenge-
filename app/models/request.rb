@@ -11,7 +11,7 @@ class Request
     else
       json = { 'code' => response.code }
     end
-    json 
+    json
   end
 
   def create_a_menu(title)
@@ -27,7 +27,7 @@ class Request
   end
 
   def add_recipe_to_menu(menu_id, recipe_id)
-    get_response_as_json(Unirest.post(BASE_URL + "/v1/menus/#{menu_id}/recipes", headers: AUTHORIZATION_HEADER, parameters: { 'menu_recipe': { 'recipe_id': recipe_id } }))
+    get_response_as_json(Unirest.post(BASE_URL + "/v1/menus/#{menu_id}/recipes", headers: AUTHORIZATION_HEADER, parameters: { 'recipe_id': recipe_id }))
   end
 
   def remove_recipe_from_menu(menu_id, recipe_id)
