@@ -18,7 +18,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Store and protect keys in .env file (added to .gitignore)
 gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
 # Use rest-client to handle requests to third-party API
-gem 'rest-client', :require => 'rest-client'
+# gem 'rest-client', :require => 'rest-client'
+gem 'unirest', :require => 'unirest'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors', :require => 'rack/cors'
