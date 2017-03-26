@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   scope module: 'api' do
     namespace :v1 do
-      namespace :requests do
+      scope 'requests' do
         post '/menus', to: 'requests#create_menu'
         put '/menus/:id', to: 'requests#update_menu'
-        delete '/menus/:id', to: 'requests#delete_menu'
+        delete '/menus/:id', to: 'requests#destroy_menu'
         post '/recipes', to: 'requests#create_recipe'
         put '/recipes:id', to: 'requests#update_recipe'
         delete '/recipes/:id', to: 'requests#destroy_recipe'
