@@ -9,7 +9,6 @@ module Api::V1
 
     # PUT /requests/menus/:id
     def update_menu
-      binding.pry
       @menu = @proxy_request.update_menu(params[:id], params[:title])
       render json: @menu, status: @menu['code']
     end
@@ -28,7 +27,7 @@ module Api::V1
 
     # DELETE /requests/menus/:menu_id/recipes/:id
     def destroy_menu_recipe
-      @response = @proxy_request.remove_recipe_from_menu(params[:menu_id], params[:recipe_id])
+      @response = @proxy_request.remove_recipe_from_menu(params[:menu_id], params[:id])
       render json: @response, status: @response['code']
     end
 
