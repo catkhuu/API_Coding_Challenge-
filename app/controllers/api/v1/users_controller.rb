@@ -1,6 +1,6 @@
 module Api::V1
   class UsersController < ApplicationController
-
+    before_action :authenticate, only: [:show, :update]
     # POST /users
     def create
       @user = User.new(user_params)
@@ -18,6 +18,7 @@ module Api::V1
 
     # PATCH/PUT /users/1
     def update
+      binding.pry
       if @current_user.update(user_params)
         render json: @current_user
       else
