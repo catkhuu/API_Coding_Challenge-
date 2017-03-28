@@ -5,7 +5,7 @@ module Api::V1
     # POST /sessions
     def create
       user = User.find_by(username: params[:username])
-      if user&.authenticate(params[:password])
+      if user & user.authenticate(params[:password])
         User.set_auth_token(user)
         render json: user.as_json(only: [:id, :username, :auth_token]), status: :ok
       else
